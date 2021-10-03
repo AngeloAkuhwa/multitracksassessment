@@ -1,0 +1,10 @@
+﻿
+body{
+    background-color:grey;
+}
+fieldset {
+    padding: 50px
+}
+legend{
+    font-size:6rem;
+}

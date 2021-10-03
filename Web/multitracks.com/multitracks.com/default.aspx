@@ -8,71 +8,66 @@
          Assessment | MultiTracks
       </title>
       <meta charset="utf-8">
-      <link rel="icon" href="https://mtracks.azureedge.net/public/images/icon/favicon/favicon-32x32.png" type="image/png">
-      <link rel="icon" href="https://mtracks.azureedge.net/public/images/icon/favicon/favicon-svg2.svg" type="image/svg+xml">
-      <meta name="theme-color" content="#ffffff">
-      <link media="all" rel="stylesheet" href="https://mtracks.azureedge.net/public/css/v22/main.min.css?v=4">
-      <style type="text/css">.is-slide-hidden{position:absolute;left:-9999px;top:-9999px;display:block;}</style>
+        <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="../Scripts/jquery-3.0.0.min.js"></script>
+        <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+       <link href="PageToSync/css/LandingView.css" rel="stylesheet" />
+       <link href="css/font-awesome.min.css" rel="stylesheet" />
    </head>
    <body id="about" class="premium standard">
       <form>
-         <div class="mobile-panel mod-left js-mobile-left js-mobile-panel">
-            <a href="#" class="mobile-panel--close js-click-hide-products"></a>
-         </div>
-         <div class="mobile-panel mod-right js-mobile-right js-mobile-panel">
-            <a href="#" class="mobile-panel--close js-click-hide-account"></a>
-            <nav id="mobile-menu-account" class="mobile-menu">
-               <nav class="mobile-menu--breadcrumbs js-menu-breadcrumbs"><a>All</a></nav>
-               <button class="mobile-menu--back is-hidden js-menu-back" aria-label="Go back"></button>
-               <button class="mobile-panel--close-btn js-click-hide-account" aria-label="Close Menu">
-                  <svg class="mobile-panel--close-btn--icon">
-                     <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.symbol.svg#X-Close-thick"></use>
-                  </svg>
-               </button>
-               <div class="mobile-menu--wrap">
-                  <ul data-menu="main" data-menu-id="0" class="mobile-menu--level js-menu-level is-current">
-                     <li id="header_registerLinkMobile" class="mobile-menu--item js-menu-item"><a class="mobile-menu--link js-menu-link" href="/register/">Sign Up</a></li>
-                     <li id="header_loginItemMobile" class="mobile-menu--item js-menu-item"><a href="/login/" id="header_loginLinkMobile" class="mobile-menu--link js-menu-link"> Log In </a></li>
-                     <li class="mobile-menu--item js-menu-item"><a href="/cart/" id="header_mobileCartButton" class="mobile-menu--link js-menu-link js-cart-count">Cart</a></li>
-                     <li class="mobile-menu--item js-menu-item"><a href="https://intercom.help/multitracks/en/" id="header_supportLinkMobile" class="mobile-menu--link js-menu-link">Help Center</a></li>
-                  </ul>
-               </div>
-            </nav>
-         </div>
          <header class="header mod-interior remodal-bg">
-            <div class="header--holder">
-               <div class="header--mobile js-media-search-mobile-container">
-                  <a class="header--mobile--logo" href="/resources">
-                     <img src="//mtracks.azureedge.net/public/images/site/logo/en/logo-mono.svg" id="header_logo" class="header--mobile--logo--img mod-full" alt="MultiTracks.com">
-                     <svg class="header--mobile--logo--img mod-mark">
-                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.symbol.svg#mt-death-star"></use>
-                     </svg>
-                  </a>
-                  <div class="header--mobile--right">
-                     <div class="header--mobile--search search">
-                        <input accesskey="4" type="text" placeholder="Search" class="search--input input mod-search js-media-search-mobile" name="" value="">
-                        <a href="#" class="search--submit js-media-search-mobile-btn">
-                           <svg class="search--submit--icon">
-                              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.symbol.svg#Search-Input"></use>
-                           </svg>
-                        </a>
+
+           <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                  <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="//mtracks.azureedge.net/public/images/site/logo/en/logo-mono.svg" id="header_logo" class="header--mobile--logo--img mod-full" alt="MultiTracks.com">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+                        <li class="nav-item">
+                          <a class="nav-link" href="#">All</a>
+                        </li>
+                         <li class="nav-item">
+                          <a class="nav-link" href="/SignUp.aspx">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="/login.aspx">Login</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link" href="/login.aspx">Cart</a>
+                        </li> 
+                        <li class="nav-item">
+                         <a class="nav-link" href="/login.aspx">Help Center</a>
+                        </li> 
+                         <li class="nav-item">
+                         <a class="nav-link" href="/artistDetails.aspx">Artist Details</a>
+                        </li>
+                          <hr/>
+                      </ul>
+                    </div>
+                  </div>
+            </nav>
+
+             <div class="container">
+                <div class="row">
+                      <div class="conectedStage">
+                        <h1>Welcome to </h1>
+                        <h1>The Connected Stage</h1>
+                      </div>
+                  </div>
+             </div>
+
+             <div class="container">
+                     <div class="jumbotron">
+                         <img src="https://unsplash.com/photos/yWF2LLan-_o/download?force=true" alt="musical photo" style="width:100%; height:400px; object-fit:cover"/>
                      </div>
-                     <a href="#" class="header--mobile--search--close btn-text js-media-search-mobile-close">Cancel</a>
-                  </div>
-               </div>
-               <div class="header--left">
-                  <a class="header--left--logo" href="/resources"><img src="//mtracks.azureedge.net/public/images/site/logo/en/logo-mono.svg" id="header_logoFull" class="header--left--logo--img mod-full" alt="MultiTracks.com"></a>
-                  <div class="header--mobile mod-right">
-                     <a class="header--mobile--link js-click-show-account" href="#">
-                        <svg class="header--mobile--link--icon">
-                           <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/sprite.symbol.svg#account"></use>
-                        </svg>
-                     </a>
-                  </div>
-               </div>
-               <div class="header--right"></div>
-            </div>
+             </div>
          </header>
+
          <div class="wrapper mod-standard remodal-bg">
             <div class="text-hero mod-headphones ly-delta">
                <h1 class="text-hero--title">DotNET Assessment</h1>
@@ -110,6 +105,8 @@
                      </div>
                   </div>
                </div>
+
+                
             </main>
          </div>
       </form>

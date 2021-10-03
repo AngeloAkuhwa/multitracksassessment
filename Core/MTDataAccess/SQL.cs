@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace DataAccess
 {
-	public partial class SQL
+    public partial class SQL
 	{
 		private SqlConnection connection;
 		private SqlTransaction transaction;
@@ -173,6 +173,7 @@ namespace DataAccess
 
 			command.CommandType = commandType;
 			command.CommandText = query;
+			
 			command.CommandTimeout = Timeout;
 
 			addParameters();

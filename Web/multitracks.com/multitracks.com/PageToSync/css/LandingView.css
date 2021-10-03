@@ -1,0 +1,31 @@
+﻿
+
+
+#header_logo {
+    width: 90%;
+    
+}
+
+#navbarSupportedContent{
+    /*border: 1px solid red;*/
+}
+
+#navbarSupportedContent>ul{
+    /*border:1px solid red;*/
+    width: 550px;
+    margin-left:25rem !important;
+}
+#navbarSupportedContent>ul li{
+    padding: 5px;
+    font-weight:bold;
+}
+.conectedStage{
+    text-align:center;
+    width:100%;
+    height:400px;
+    padding-top:2rem;
+    font-size: 5rem;
+}
+.conectedStage>h1{
+    font-size:4rem;
+}
