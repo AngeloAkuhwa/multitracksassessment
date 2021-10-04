@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"   CodeFile="artistDetails.aspx.cs" Inherits="artistDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true"   CodeFile="artistDetails.aspx.cs" Inherits="artistDetails" MaintainScrollPositionOnPostback="true"  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +9,10 @@
 	<meta charset="utf-8">
 	<title>MultiTracks.com</title>
 	<!-- include the site stylesheet -->
+	 <link href="../Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="../Scripts/jquery-3.0.0.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/f59bcd8580.js"></script>
     <link href="PageToSync/css/index.css" rel="stylesheet" />
 </head>
 	
@@ -155,6 +159,17 @@
 				</div><!-- /.standard-container -->
 			</div><!-- /.wrapper -->
 			
+			<!--pagination navigator-->
+			<div class="col-sm-12">
+				<ul class="pagination justify-content-center">
+					<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link active" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#">4</a></li>
+					<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+				</ul>
+			</div>
 			<a class="accessibility" href="#wrapper" tabindex="20">Back to top</a>
 
 			</form>
