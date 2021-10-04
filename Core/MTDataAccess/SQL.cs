@@ -16,7 +16,7 @@ namespace DataAccess
 
 		private bool autoOpen = false;
 
-		public int Timeout = 30;
+		public int Timeout = 60;
 
 		private string connectionString = "";
 

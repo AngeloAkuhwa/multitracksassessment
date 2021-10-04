@@ -15,7 +15,7 @@ namespace MTBusinessLogic.Contract
 
         IReadOnlyList<Song> GetAllAvailableSongs();
 
-        ICollection<Song> GetPaginated(int pageNumber, int itemsPerPage, IList<Song> items);
+        ICollection<T> GetPaginated<T>(int pageNumber, int itemsPerPage, IList<T> items);
 
         ICollection<Song> PaginateSongs();
     }

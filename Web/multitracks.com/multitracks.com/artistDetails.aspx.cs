@@ -7,8 +7,16 @@ using System.Collections.Generic;
 public partial class artistDetails : System.Web.UI.Page
 {
     public List<artistDetailsModel> ArtistDetailsModels = new List<artistDetailsModel>(); 
-    public List<artistDetailsModel> ExpectedDetails {  get; set; } 
+    public List<artistDetailsModel> ExpectedDetails {  get; set; }
+    public int PageNumber = 1;
+    public double itemsPerPage = 10;
 
+    private ISongService _songService;
+    public ISongService SongService
+    {
+        get { return _songService == null ? new SongService() : _songService; }
+        set { _songService = value; }
+    }
 
     private ICloudinaryService _cloudinaryService;
     public ICloudinaryService CloudinaryService
@@ -31,9 +39,10 @@ public partial class artistDetails : System.Web.UI.Page
          
     }
 
-    public List<ArtistDetailsDTO> GetArtistDetails()
+    public ICollection<ArtistDetailsDTO> GetArtistDetails()
     {
         List<ArtistDetailsDTO> artistDetails = ArtistService.GetArtistDetailAsync();
+        var itemsPerPage = 10;
 
         foreach (var item in artistDetails)
         {
@@ -54,8 +63,17 @@ public partial class artistDetails : System.Web.UI.Page
         }
 
         ExpectedDetails = ArtistDetailsModels;
+        var result = SongService.GetPaginated<ArtistDetailsDTO>(PageNumber, itemsPerPage, artistDetails);
+        return result;
+    }
 
-        return artistDetails;   
+    public int ArtistDetailsPageCount()
+    {
+        double itemsPerPage = 15;
+       var TotalNumberOfPages = (int)Math.Ceiling(GetArtistDetails().Count / itemsPerPage);
+
+        return TotalNumberOfPages;
+
     }
 }
 public class artistDetailsModel

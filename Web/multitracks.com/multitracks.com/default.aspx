@@ -45,9 +45,9 @@
                         </li> 
                          <li class="nav-item">
                          <a class="nav-link" href="/artistDetails.aspx">Artist Details</a>
-                        </li>
-                          <hr/>
+                        </li>  
                       </ul>
+                          <hr/>
                     </div>
                   </div>
             </nav>

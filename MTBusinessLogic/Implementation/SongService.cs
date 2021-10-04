@@ -66,7 +66,7 @@ namespace MTBusinessLogic.Implementation
 
         }
 
-        public ICollection<Song> GetPaginated(int pageNumber, int itemsPerPage, IList<Song> items)
+        public ICollection<T> GetPaginated<T>(int pageNumber, int itemsPerPage, IList<T> items)
         {
             TotalNumberOfItems = items.Count();
 
