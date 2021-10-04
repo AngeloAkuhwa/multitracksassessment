@@ -36,7 +36,7 @@ public partial class artistDetails : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-         
+        Page.MaintainScrollPositionOnPostBack = true;
     }
 
     public ICollection<ArtistDetailsDTO> GetArtistDetails()

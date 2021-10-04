@@ -1,15 +1,11 @@
 ﻿using DataAccess;
-using Microsoft.AspNetCore.Http;
 using MTBusinessLogic.Contract;
 using MTBusinessLogic.Model;
 using MTBusinessLogic.Model.Common;
 using MTBusinessLogic.Model.DTO;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
 
 namespace MTBusinessLogic.Implementation
 {
@@ -81,8 +77,9 @@ namespace MTBusinessLogic.Implementation
             sqlParamLastLanguage.Direction = ParameterDirection.Input;
 
             SqlParameter sqlParamZip = new SqlParameter();
-            sqlParamZip.ParameterName = param.zip;
-            sqlParamZip.SqlDbType = SqlDbType.VarChar;
+            sqlParamZip.Value = param.zip;
+            sqlParamZip.ParameterName = "zip";
+            sqlParamZip.SqlDbType = SqlDbType.Int;
             sqlParamZip.Direction = ParameterDirection.Input;
 
 

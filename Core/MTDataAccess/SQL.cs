@@ -182,7 +182,6 @@ namespace DataAccess
 
 			if (clearParameters)
 				Parameters.Clear();
-
 			return reader;
 		}
 

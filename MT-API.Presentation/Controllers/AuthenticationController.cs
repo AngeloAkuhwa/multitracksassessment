@@ -1,4 +1,7 @@
 ﻿
+using Microsoft.AspNetCore.Cors;
+using MT_API.Presentation.AuthProvider;
+using MT_API.Presentation.Data;
 using MTBusinessLogic.Contract;
 using MTBusinessLogic.Model;
 using MTBusinessLogic.Model.Common;
@@ -8,13 +11,14 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Description;
 
 namespace MT_API.Presentation.Controllers
 {
     [RoutePrefix("api.multitracks.com")]
+    [EnableCorsAttribute("*")]
     public class AuthenticationController : ApiController
     {
         public AuthenticationController() : base()
@@ -49,9 +53,9 @@ namespace MT_API.Presentation.Controllers
         }
 
         [HttpPost]
-        [Route("User/SignUp")]
+        [Route("User/Login")]
         [AllowAnonymous]
-        [ResponseType(typeof(AppUser))]
+        [ResponseType(typeof(bool))]
         public HttpResponseMessage Login(LoginDTO param)
         {
             if (!ModelState.IsValid)
@@ -65,6 +69,26 @@ namespace MT_API.Presentation.Controllers
             if (signUpResult) return Request.CreateResponse(HttpStatusCode.OK);
 
             return Request.CreateResponse();
+        }
+
+
+        [BasicAuthentication]
+        public HttpResponseMessage Get(string gender = null)
+        {
+            string userName = Thread.CurrentPrincipal.Identity.Name;
+
+            ApplicationDbContext entities = new ApplicationDbContext();
+            switch (userName.ToLower())
+            {
+                case "male":
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        entities.AppUsers.Where(u => u.gender.ToLower() == "male"));
+                case "female":
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        entities.AppUsers.Where(u => u.gender.ToLower() == "female"));
+                default:
+                    return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
         }
     }
 }

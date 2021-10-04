@@ -20,10 +20,10 @@ namespace MTBusinessLogic.Model
 
         public string Address { get; set; }
 
-        public string zip { get; set; }
+        public int zip { get; set; }
 
-        public string deateCReation { get; set; } = DateTime.UtcNow.ToString();
+        public DateTime deateCreation { get; set; } = DateTime.UtcNow;
 
-        public string dateUpdated { get; set; } = DateTime.UtcNow.ToString();
+        public DateTime dateUpdated { get; set; } = DateTime.UtcNow;
     }
 }

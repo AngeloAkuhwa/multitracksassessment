@@ -84,14 +84,78 @@ https://bit.ly/3m9avif
 					</div>
 
 					<div class="form-group ">
-						<button type="button" class="btn btn-info btn-lg btn-block login-button">Register</button>
+						<button type="button" id="btnRegister" class="btn btn-info btn-lg btn-block login-button">Register</button>
 					</div>
 				</fieldset>
 			</form>
 
+			<div class="modal fade" tabindex="-1" id="successModal" data-keyboard="false" data-backdrop="static">
+				<div class="modal-dialog modal-md">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dissmiss="modal">
+								&times;
+							</button>
+							<h6>Success</h6>
+						</div>
+						<div class="modal-body">
+							<h3>Registration Successful</h3>
+						</div>
+						<div class="modal-footer">
+							<button type="button" data-dissmiss="modal"  class="btn btn-success">
+								close
+							</button>
+						</div>
+
+					</div>
+
+				</div>
+
+				<div id="divError" class="alert alert-alert-danger collapse">
+					<a id="linkClose" class="close" href="#">&times;</a>
+					<div id="divErrorText"></div>
+				</div>
+			</div>
+
 		</div>
 	</div>
   </div>  
+
+    <script src="Scripts/jquery-3.6.0.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+	<script type="text/javascript">
+	const { error } = require("jquery");
+
+		$(document).ready(function () {
+			$('#linkClose').click(function () {
+                $('divError').hide('fade');
+			});
+
+			$('#btnRegister').click(function () {
+				$ajax({
+					url: '/api.multitracks.com/Authentication/SignUp',
+                    Method: 'POST'
+					data: {
+						email: $('#name').val(),
+						password: $('#name').val(),
+						confirmPassword: $('#name').val(),
+					},
+					success: function () {
+                        $('#successModal').modal('show');
+					}
+					error: function (jqxHR) {
+						$('#divErrorText').text(jqXHR.Responsetext);
+
+						$('#divError').show('fade');
+					};
+				});
+
+                
+			});
+		});
+
+
+    </script>
 </form>
 </body>
 </html>

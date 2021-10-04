@@ -19,7 +19,9 @@
 
 
 	<body class="premium standard u-fix-fancybox-iframe">
+
 		<form runat="server">
+			<asp:HiddenField runat="server" ID="hfPosition" Value="" />
 			<!-- allow a user to go to the main content of the page -->
 			<a class="accessibility" href="#main" tabindex="21">Skip to Content </a>
 
@@ -172,6 +174,12 @@
 			</div>
 			<a class="accessibility" href="#wrapper" tabindex="20">Back to top</a>
 
+			<asp:HiddenField runat="server" ID="SendA" Value="" />
 			</form>
 	</body>
 </html>
+
+<script type="text/javascript">
+    
+   document.getElementById("<%=SendA.ClientID%>").value = "1";
+</script>

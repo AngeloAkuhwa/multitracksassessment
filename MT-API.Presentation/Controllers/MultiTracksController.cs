@@ -41,7 +41,7 @@ namespace MT_API.Presentation.Controllers
         [Route("artist/add")]
         [AllowAnonymous]
         [ResponseType(typeof(Artist))]
-        public async Task<HttpResponseMessage> AddArtist(AddArtistParamsBinder param)
+        public HttpResponseMessage AddArtist(AddArtistParamsBinder param)
         {
 
             if (!ModelState.IsValid)
@@ -50,7 +50,7 @@ namespace MT_API.Presentation.Controllers
 
                 return Request.CreateResponse(HttpStatusCode.BadRequest, errors);
             }
-             await PostImage();
+            
             AddAlbumDTO addAlbumParam = new AddAlbumDTO();
             addAlbumParam.title = param.albumTitle;
             addAlbumParam.year = param.year;
@@ -106,14 +106,15 @@ namespace MT_API.Presentation.Controllers
         //SELECT {Movies}.[Id],{Movies}.[Title] from {Movies} where {Movies}.[Id] between @In1 and @In2  and
         //{Movies}.[Title] like '%'+@In3+'%' and {Movies}.[Title] like '%'+@In4+'%'
 
-        //[HttpPost]
-        //[Route("user/PostUserImage")]
-        //[AllowAnonymous]
-        public async Task<HttpResponseMessage> PostImage()
+        [HttpPost]
+        [Route("user/PostUserImage")]
+        [AllowAnonymous]
+        public async Task<HttpResponseMessage> PostImage(AddArtistParamsBinder param)
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
             try
             {
+
                 if (HttpContext.Current.Request.Files.Count < 3) throw new ApplicationException("all images are required");
 
                 var httpRequest = HttpContext.Current.Request;
@@ -128,7 +129,7 @@ namespace MT_API.Presentation.Controllers
                     {
                         
 
-                        int MaxContentLength = 1024 * 1024 * 5; //Size = 1 MB  
+                        int MaxContentLength = 1024 * 1024 * 20; //Size = 1 MB  
 
                         IList<string> AllowedFileExtensions = new List<string> { ".jpg", ".gif", ".png" };
                         var ext = postedFile.FileName.Substring(postedFile.FileName.LastIndexOf('.'));
@@ -151,7 +152,7 @@ namespace MT_API.Presentation.Controllers
                         else
                         {
                             var newFileName = "Image_" + Guid.NewGuid().ToString() + postedFile.FileName + extension;
-                            var filePath = Path.Combine(@"D:\MultiTracks\MT-API.Presentation\Images\" + postedFile.FileName + extension);
+                            var filePath = Path.Combine(@"C:\Users\hp\source\repos\Multitracks.com\MT-API.Presentation\Images\" + postedFile.FileName + extension);
 
                             FileStream fileStream = new FileStream(filePath, FileMode.Create);
                             postedFile.InputStream.CopyTo(fileStream);
@@ -177,6 +178,15 @@ namespace MT_API.Presentation.Controllers
                     var message1 = string.Format("Image Upload Successful");
                     return Request.CreateErrorResponse(HttpStatusCode.Created, message1); ;
                 }
+
+                AddAlbumDTO addAlbumParam = new AddAlbumDTO();
+                addAlbumParam.title = param.albumTitle;
+                addAlbumParam.year = param.year;
+                AddArtistDTO addArtistParam = new AddArtistDTO();
+                addArtistParam.biography = param.biography;
+                addArtistParam.title = param.artistTitle;
+                var artist = _artistService.AddArtist(addArtistParam, addAlbumParam, ImagesDTO);
+
                 var res = string.Format("Please Upload a image.");
                 dict.Add("error", res);
                 return Request.CreateResponse(HttpStatusCode.NotFound, dict);
