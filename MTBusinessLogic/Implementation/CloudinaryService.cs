@@ -2,6 +2,7 @@
 using CloudinaryDotNet.Actions;
 using Microsoft.AspNetCore.Http;
 using MTBusinessLogic.Contract;
+using MTBusinessLogic.Utils;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -29,9 +30,9 @@ namespace MTBusinessLogic.Implementation
         {
             bool pictureFormat = false;
 
-            List<string> listOfPhotoExtensions = GetPhotoExtensions();
+            string[] listOfPhotoExtensions = PhotoExtensions.GetPhotoExtensions();
 
-            for (int i = 0; i < listOfPhotoExtensions.Count; i++)
+            for (int i = 0; i < listOfPhotoExtensions.Length; i++)
             {
                 var ele = model.FileName.ToLower();
                 if (ele.EndsWith(listOfPhotoExtensions[i]))
@@ -83,15 +84,6 @@ namespace MTBusinessLogic.Implementation
             var result = await _cloudinary.DeleteResourcesAsync(deleteParams);
 
             return result;
-        }
-
-        private List<string> GetPhotoExtensions()
-        {
-            List<string> listOfPhotoExtensions = new List<string>();
-            listOfPhotoExtensions.Add(ConfigurationManager.AppSettings["PhotoSettings:Extensions.Jpg"]);
-            listOfPhotoExtensions.Add(ConfigurationManager.AppSettings["PhotoSettings:Extensions.Jpeg"]);
-            listOfPhotoExtensions.Add(ConfigurationManager.AppSettings["PhotoSettings:Extensions.png"]);
-            return listOfPhotoExtensions;
         }
 
         public async Task<UploadResult> UploadImageStream(Stream image, string fileLength)

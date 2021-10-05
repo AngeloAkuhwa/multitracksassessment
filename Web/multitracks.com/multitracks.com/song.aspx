@@ -104,7 +104,6 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
                 href="#"
-                href="#"
                 >Sounds</a
               >
               <ul class="dropdown-menu" aria-labelledby="soundDropdown">
@@ -175,6 +174,7 @@
     </nav>
 
     <div class="container">
+
       <!--Search Area-->
       <div class="contain">
         <div class="input-group">
@@ -182,6 +182,7 @@
           <input type="text" class="form-control search-form" aria-describedby="search-prepend" placeholder="Search..." />
         </div>
       </div>
+
       <!--Filter Area-->
       <div class="mt-3">
           <div class="col-md-6 mx-auto">
@@ -194,14 +195,8 @@
               <a href="#" class="btn btn-outline-secondary nav-item">Producer</a>
             </nav>
           </div>
-          <!-- <div class="col-md-3">
-            <select name="filter" id="filter" class="form-control">
-              <option value="Popularity"></option>
-              <option value="Popularity(Global)"></option>
-              <option value="Alphabetical"></option>
-              <option value="Date Added"></option>
-            </select>
-          </div> -->
+
+
       </div>
       <!--Songs Result-->
       <div class="mt-3">
@@ -345,39 +340,39 @@
         </div>
         <div class="row">
           <div class="col-md-2">
-            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art">
+            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art"/>
             <div class="text-center">
-              <h6 class="album-title">Hillsong Worship<br><small>35 Albums</small></p>
+              <h6 class="album-title">Hillsong Worship<br/><small>35 Albums</small></h6>
             </div>
           </div>
           <div class="col-md-2">
-            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art">
+            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art"/>
             <div class="text-center">
-              <h6 class="album-title">Hillsong Worship<br><small>35 Albums</small></p>
+              <h6 class="album-title">Hillsong Worship<br/><small>35 Albums</small></h6>
             </div>
           </div>
           <div class="col-md-2">
-            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art">
+            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art"/>
             <div class="text-center">
-              <h6 class="album-title">Hillsong Worship<br><small>35 Albums</small></p>
+              <h6 class="album-title">Hillsong Worship<br/><small>35 Albums</small></h6>
             </div>
           </div>
           <div class="col-md-2">
-            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art">
+            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art"/>
             <div class="text-center">
-              <h6 class="album-title">Hillsong Worship<br><small>35 Albums</small></p>
+              <h6 class="album-title">Hillsong Worship<br/><small>35 Albums</small></h6>
             </div>
           </div>
           <div class="col-md-2">
-            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art">
+            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art"/>
             <div class="text-center">
-              <h6 class="album-title">Hillsong Worship<br><small>35 Albums</small></p>
+              <h6 class="album-title">Hillsong Worship<br/><small>35 Albums</small></h6>
             </div>
           </div>
           <div class="col-md-2">
-            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art">
+            <img src="https://mtracks.azureedge.net/public/images/artists/cover/260/5.jpg" alt="Artist cover" class="img-fluid artist-art"/>
             <div class="text-center">
-              <h6 class="album-title">Hillsong Worship<br><small>35 Albums</small></p>
+              <h6 class="album-title">Hillsong Worship<br/><small>35 Albums</small></h6>
             </div>
           </div>
         </div>

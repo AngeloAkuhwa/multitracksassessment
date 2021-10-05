@@ -11,11 +11,8 @@
     <link href="../PageToSync/css/signup.css" rel="stylesheet" />
 </head>
 <body style="background-color:#e9ecef !important;">
-<form id="form1" runat="server">
-       
-<!-- Subscribe me on Youtube
-https://bit.ly/3m9avif
--->
+
+<form  method="post" runat="server" >
 
 <div class="container">
 	<div class="row">
@@ -27,38 +24,79 @@ https://bit.ly/3m9avif
 	</div>
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-8 mx-auto">
-			<form class="form-horizontal" method="post" action="#" >
+			<div class="form-horizontal">
 				<br/>
 				<fieldset style="background-color: white !important; margin:0 auto;">
 				  <h2 style="font-size:3rem;" class="mx-auto text-center">Create Account</h2>
 					<p class="text-center" style="font-size:1.5rem;">Already have an account? <a href="/login.aspx">Login</a></p> 
 					
 						<div class="form-group">
-							<label for="name" class="cols-sm-2 control-label">Your Name</label>
+							<label for="name" class="cols-sm-2 control-label">First Name</label>
 							<div class="cols-sm-10">
 								<div class="input-group">
 									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-									<input type="text" class="form-control" name="name" id="name"  placeholder="Enter your Name" required/>
+									<input type="text" runat="server" class="form-control" name="firstname" id="firstname"  placeholder="Enter your firstName" required ="required"/>
 								</div>
 							</div>
 						</div>
 
 					<div class="form-group">
-						<label for="email" class="cols-sm-2 control-label">Your Email</label>
+						<label for="email" class="cols-sm-2 control-label">Last Name</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" runat="server" class="form-control" name="lastName" id="lastname"  placeholder="Enter your lastName" required ="required"/>
+							</div>
+						</div>
+					</div>
+
+					
+					<div class="form-group">
+						<label for="email" class="cols-sm-2 control-label">Email</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="email" id="email"  placeholder="Enter your Email"/>
+								<input type="text" runat="server" class="form-control" name="email" id="email"  placeholder="Enter your Email" required ="required"/>
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="username" class="cols-sm-2 control-label">Username</label>
+						<label for="email" class="cols-sm-2 control-label">Church or Organization</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-								<input type="text" class="form-control" name="username" id="username"  placeholder="Enter your Username"/>
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" runat="server" class="form-control" name="church" id="church"  placeholder="Enter your church or organization" required="required"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="email" class="cols-sm-2 control-label">Language</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" runat="server" class="form-control" name="language" id="language"  placeholder="Enter your language" required="required"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="email" class="cols-sm-2 control-label">Country</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" runat="server" class="form-control" name="country" id="country"  placeholder="Enter your country" required="required"/>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="email" class="cols-sm-2 control-label">Address</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+								<input type="text" runat="server" class="form-control" name="address" id="address"  placeholder="Enter your address" required="required"/>
 							</div>
 						</div>
 					</div>
@@ -68,26 +106,27 @@ https://bit.ly/3m9avif
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-								<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password"/>
+								<input type="text" runat="server" class="form-control" name="zip" id="zip"  placeholder="zip code" required="required"/>
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+						<label for="password" class="cols-sm-2 control-label">Password</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-								<input type="password" class="form-control" name="confirm" id="confirm"  placeholder="Confirm your Password"/>
+								<input type="password" runat="server" class="form-control" name="password" id="password"  placeholder="Enter your Password" required="required"/>
 							</div>
 						</div>
 					</div>
 
+
 					<div class="form-group ">
-						<button type="button" id="btnRegister" class="btn btn-info btn-lg btn-block login-button">Register</button>
+						<button type="submit" id="btnRegister" runat="server" class="btn btn-info btn-lg btn-block login-button">Register</button>
 					</div>
 				</fieldset>
-			</form>
+			</div>
 
 			<div class="modal fade" tabindex="-1" id="successModal" data-keyboard="false" data-backdrop="static">
 				<div class="modal-dialog modal-md">
@@ -120,42 +159,7 @@ https://bit.ly/3m9avif
 		</div>
 	</div>
   </div>  
-
-    <script src="Scripts/jquery-3.6.0.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>
-	<script type="text/javascript">
-	const { error } = require("jquery");
-
-		$(document).ready(function () {
-			$('#linkClose').click(function () {
-                $('divError').hide('fade');
-			});
-
-			$('#btnRegister').click(function () {
-				$ajax({
-					url: '/api.multitracks.com/Authentication/SignUp',
-                    Method: 'POST'
-					data: {
-						email: $('#name').val(),
-						password: $('#name').val(),
-						confirmPassword: $('#name').val(),
-					},
-					success: function () {
-                        $('#successModal').modal('show');
-					}
-					error: function (jqxHR) {
-						$('#divErrorText').text(jqXHR.Responsetext);
-
-						$('#divError').show('fade');
-					};
-				});
-
-                
-			});
-		});
-
-
-    </script>
 </form>
+
 </body>
 </html>

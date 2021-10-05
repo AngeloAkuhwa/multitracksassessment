@@ -33,6 +33,7 @@ namespace DataAccess
 
 		public SQL(string connectionStringName)
 		{
+
 			if (ConfigurationManager.ConnectionStrings[connectionStringName] == null)
 				throw new Exception("\"" + connectionStringName + "\" connection string not found in config file.");
 			else

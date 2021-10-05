@@ -6,7 +6,5 @@ namespace MTBusinessLogic.Contract
     {
 
         bool Login(LoginDTO param);
-
-        void LogOut();
     }
 }

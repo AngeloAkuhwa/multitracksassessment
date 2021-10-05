@@ -1,15 +1,4 @@
-﻿using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
-using MT_API.Presentation.Data;
-using MT_API.Presentation.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace MT_API.Presentation.App_Start
+﻿namespace MT_API.Presentation.App_Start
 {
     //public class ApplicationUserManager : UserManager<AppUser>
     //{

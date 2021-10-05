@@ -147,8 +147,9 @@
     <Compile Include="Model\DTO\SignUpDTO.cs" />
     <Compile Include="Model\Song.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\ResponseMapper.cs" />
-    <Compile Include="Utils\Validator.cs" />
+    <Compile Include="Properties\Utils\HTTPMethods.cs" />
+    <Compile Include="Properties\Utils\PhotoExtensions.cs" />
+    <Compile Include="Properties\Utils\Validator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\MTDataAccess\MTDataAccess.csproj">

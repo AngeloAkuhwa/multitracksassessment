@@ -13,7 +13,11 @@
     <script src="../Scripts/jquery-3.0.0.min.js"></script>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/f59bcd8580.js"></script>
-    <link href="PageToSync/css/index.css" rel="stylesheet" />
+	<link href="PageToSync/css/index.css" rel="stylesheet" />
+
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 	
 
@@ -48,13 +52,13 @@
 				<nav class="discovery--nav">
 					<ul class="discovery--nav--list tab-filter--list u-no-scrollbar">
 						<li class="discovery--nav--list--item tab-filter--item is-active">
-							<a class="tab-filter" href="../artists/details.aspx">Overview</a>
+							<a class="tab-filter" href="/artistDetails.aspx">Overview</a>
 						</li>
 						<li class="discovery--nav--list--item tab-filter--item">
 							<a class="tab-filter" href="/song.aspx">Songs</a>
 						</li>
 						<li class="discovery--nav--list--item tab-filter--item">
-							<a class="tab-filter" href="../artists/albums/details.aspx">Albums</a>
+							<a class="tab-filter" href="#">Albums</a>
 						</li>
 					</ul> <!-- /.browse-header-filters -->
 				</nav>
@@ -146,11 +150,12 @@
 								<section class="standard--holder">
 									<div class="discovery--section--header">
 										<h2>Biography</h2>
-									</div><!-- /.discovery-section-header -->
+									</div>
 
-									<div class="artist-details--biography biography">
-										<p><% = item.biography %></p>
-										<a href="#">Read More...</a>
+									<!-- /.discovery-section-header -->
+									  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">...ReadMore</button>
+									<div class="artist-details--biography biography collapse" id="demo">
+										<p class="comment more"><% = item.biography %></p>
 									</div>
 
 									
@@ -179,7 +184,4 @@
 	</body>
 </html>
 
-<script type="text/javascript">
-    
-   document.getElementById("<%=SendA.ClientID%>").value = "1";
 </script>

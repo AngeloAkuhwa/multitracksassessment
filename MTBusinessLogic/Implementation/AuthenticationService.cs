@@ -1,7 +1,6 @@
 ﻿using DataAccess;
 using MTBusinessLogic.Contract;
 using MTBusinessLogic.Model.DTO;
-using System;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -17,38 +16,30 @@ namespace MTBusinessLogic.Implementation
         }
         public bool Login(LoginDTO param)
         {
+
             InstantiateParamters(param);
 
-            var query = "SELECT COUNT(*) FROM dbo.AppUser WHERE userName = @param.userName AND password = @param.passWord";
+            var query = "SELECT email, password, FROM dbo.AppUser WHERE email = @email AND password = @passWord";
 
-            int resultCount =  _dataProvider.Execute(query,true);
+            var resultCount =  _dataProvider.Execute(query);
 
-           if(resultCount > 0)
-           {
-                return true;
-           }
-            throw new UnauthorizedAccessException("Invalid credentials");
-        }
-
-        public void LogOut()
-        {
-            throw new NotImplementedException();
+           return resultCount > 0;
         }
 
         private void InstantiateParamters(LoginDTO param)
         {
             SqlParameter sqlParamEmail = new SqlParameter();
-            sqlParamEmail.ParameterName = param.email;
+            sqlParamEmail.ParameterName = "email";
             sqlParamEmail.SqlDbType = SqlDbType.VarChar;
-            sqlParamEmail.Direction = ParameterDirection.Output;
+            sqlParamEmail.Value = param.email;
 
 
             SqlParameter sqlParamPassword = new SqlParameter();
-            sqlParamPassword.ParameterName = param.email;
+            sqlParamPassword.ParameterName = "password";
             sqlParamPassword.SqlDbType = SqlDbType.VarChar;
-            sqlParamPassword.Direction = ParameterDirection.Output;
+            sqlParamPassword.Value = param.password;    
 
-            _dataProvider.Parameters.Add(sqlParamPassword);
+            _dataProvider.Parameters.Add(sqlParamEmail);
             _dataProvider.Parameters.Add(sqlParamPassword);
         }
     }

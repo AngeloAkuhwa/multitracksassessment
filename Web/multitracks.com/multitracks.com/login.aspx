@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="Pages_login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="Pages_login" MaintainScrollPositionOnPostback="true" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,7 @@
     <link href="../PageToSync/css/login.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">   
+    <form runat="server" method="post">   
        
         <div class="container">
             <div class="row">
@@ -23,33 +23,37 @@
 		        </div>
             </div>
         </div>
+
+        
         <div class="container">
             <div class="row m-5 no-gutters shadow-lg">
                 <div class="col-md-6 d-none d-md-block">
-                <img src="https://unsplash.com/photos/nOFXvnRMMK4/download?force=true" class="img-fluid" style="min-height:100%;" />
+                <img src="https://unsplash.com/photos/nOFXvnRMMK4/download?force=true" runat="server" class="img-fluid" style="min-height:100%;" />
                 </div>
+
             <div class="col-md-6 bg-white p-5">
                 <h3 class="pb-3">Login</h3>
                 <div class="form-style">
-                <form>
 
-                      <div class="form-group pb-3">    
-                        <input type="email" placeholder="Email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">   
+                    
+                <div class="login-section">
+                      <div class="form-group pb-3">
+                         <label for="emial" class="label">Email</label>
+                        <input type="email" runat="server" name="email" placeholder="Email" class="form-control" id="email" aria-describedby="emailHelp"/>   
                       </div>
 
-                      <div class="form-group pb-3">   
-                        <input type="password" placeholder="Password" class="form-control" id="exampleInputPassword1">
+                      <div class="form-group pb-3">
+                         <label for="password" class="label">Password</label>
+                        <input type="password" runat="server" name="password" placeholder="Password" class="form-control" id="password"/>
                       </div>
 
-                      <div class="d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center"><input name="" type="checkbox" value="" /> <span class="pl-2 font-weight-bold">Remember Me</span></div>
-                        <div><a href="#">Forget Password?</a></div>
-                      </div>
-
+                      
                        <div class="pb-2">
-                          <button type="submit" class="btn btn-dark w-100 font-weight-bold mt-2">Submit</button>
+                          <button type="submit" runat="server" class="btn btn-dark w-100 font-weight-bold mt-2">Submit</button>
                        </div>
-                </form>
+                </div>
+
+
                       <div class="sideline">OR</div>
 
                       <div>

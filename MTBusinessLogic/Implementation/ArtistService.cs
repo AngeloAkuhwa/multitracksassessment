@@ -62,12 +62,6 @@ namespace MTBusinessLogic.Implementation
             var ImageURL = albumToInsert.imageURL;  
             var Year = albumToInsert.year;  
 
-            //var queryInsertArtist = "INSERT INTO dbo.Artist (dateCreation, biography, title, imageURL, heroURL)" +
-            //    " VALUES (@dateCreation, @biography, @title, @imageURL, @heroURL);";
-
-            //var queryInsertAlbum = "INSERT INTO dbo.Album (dateCreation, artistID, title, imageURL, year)" +
-            //    "VALUES (@DateCreation, @ArtistID, @Title, @ImageURL,  @Year);";
-
             _dataProvider.BeginTransaction();
 
             var artistReader = _dataProvider.ExecuteStoredProcedureDataReader("addArtist", true);
@@ -119,39 +113,6 @@ namespace MTBusinessLogic.Implementation
             };
         }
 
-        public async Task<List<AddImageResultDTO>> AddImage(List<IFormFile> images)
-        {
-            List<string> listOfUploadedImagesPublicIds = new List<string>();
-            List<AddImageResultDTO> response = new List<AddImageResultDTO>();
-
-            UploadResult imageUpLoadeResult = null;
-            if (images is null) throw new ApplicationException("select an image");
-            foreach (IFormFile image in images)
-            {
-                 imageUpLoadeResult = await _cloudinaryService.UploadImage(image);
-
-                if (imageUpLoadeResult.Error is null && imageUpLoadeResult.Url != null)
-                {
-                    listOfUpLoadedImagePublicIds.Add(imageUpLoadeResult.PublicId);
-                }
-                if (imageUpLoadeResult.Error != null)
-                {
-                    foreach (string imageId in listOfUploadedImagesPublicIds)
-                    {
-                       await _cloudinaryService.DeleteImage(imageId);
-                    }
-                    throw new ApplicationException("something went wring and our engineers are already moved to resolving it");
-                }
-
-
-                response.Add(new AddImageResultDTO { imageURL = imageUpLoadeResult.Url.ToString(), publicId = imageUpLoadeResult.PublicId });
-            }
-
-            listOfUploadedImagesPublicIds.Clear();
-
-            return response;
-        }
-
         public async Task<Response<List<ArtistDetailsDTO>>> GetArtistDetails()
         {
             SqlDataReader resultReader = _dataProvider.ExecuteStoredProcedureDataReader("GetArtistDetails", true);
@@ -189,7 +150,7 @@ namespace MTBusinessLogic.Implementation
         }
 
 
-        public List<ArtistDetailsDTO> GetArtistDetailAsync()
+        public List<ArtistDetailsDTO> GetArtistDetailInternal()
         {
             SqlDataReader resultReader = _dataProvider.ExecuteStoredProcedureDataReader("GetArtistDetails", true);
             List<ArtistDetailsDTO> artistGroup = new List<ArtistDetailsDTO>();

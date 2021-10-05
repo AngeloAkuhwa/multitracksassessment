@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
-using Microsoft.Owin.Security;
-using MT_API.Presentation.Model;
-
-namespace MT_API.Presentation.App_Start
+﻿namespace MT_API.Presentation.App_Start
 {
     //public class ApplicationSignInManager : SignInManager<AppUser, string>
     //{

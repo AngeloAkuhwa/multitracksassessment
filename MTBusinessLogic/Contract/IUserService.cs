@@ -8,6 +8,6 @@ namespace MTBusinessLogic.Contract
 {
     public interface IUserService
     {
-        Response<AppUser> SignUp(SignUpDTO param);
+        Response<AppUser> SignUp(AppUser param);
     }
 }

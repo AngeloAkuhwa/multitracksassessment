@@ -41,7 +41,7 @@ public partial class artistDetails : System.Web.UI.Page
 
     public ICollection<ArtistDetailsDTO> GetArtistDetails()
     {
-        List<ArtistDetailsDTO> artistDetails = ArtistService.GetArtistDetailAsync();
+        List<ArtistDetailsDTO> artistDetails = ArtistService.GetArtistDetailInternal();
         var itemsPerPage = 10;
 
         foreach (var item in artistDetails)

@@ -10,19 +10,23 @@ namespace MTBusinessLogic.Model
 
         public string firstName { get; set; }
 
+        public string email { get; set; }
+
         public string lastName { get; set; }
 
         public string church { get; set; }
 
-        public string langauge { get; set; }
+        public string language { get; set; }
 
         public string country { get; set; }
 
-        public string Address { get; set; }
+        public string address { get; set; }
+
+        public string password { get; set; }
 
         public int zip { get; set; }
 
-        public DateTime deateCreation { get; set; } = DateTime.UtcNow;
+        public DateTime dateCreation { get; set; } = DateTime.UtcNow;
 
         public DateTime dateUpdated { get; set; } = DateTime.UtcNow;
     }
