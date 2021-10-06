@@ -15,8 +15,6 @@
 	<link href="PageToSync/css/index.css" rel="stylesheet" />
 
 </head>
-	
-
 
 	<body class="premium standard u-fix-fancybox-iframe">
 
@@ -187,6 +185,7 @@
         let pageNumberTwo = document.getElementsByClassName("second").textContent;
         let pageNumberThree = document.getElementsByClassName("third").textContent;
 		let pageNumberFour = document.getElementsByClassName("fourth").textContent;
+        let defaultPageNumber = <% = PageNumber %>;
 
 		
 
@@ -197,9 +196,6 @@
             pageNumberTwo += 1;
             pageNumberThree += 1;
         });
-
-        let defaultPageNumber = <% = PageNumber %>;
-
 
         document.getElementsByClassName("first").addEventListener("click", function () {
             defaultPageNumber = pageNumberOne;
@@ -220,7 +216,5 @@
 				defaultPageNumber = pageNumberFour; 
 				<% = GetArtistDetails() %>;
             });
-
     </script>
-
-	</html>
+</html>
