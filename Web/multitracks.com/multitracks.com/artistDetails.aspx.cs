@@ -1,6 +1,7 @@
 ﻿using MTBusinessLogic.Contract;
 using MTBusinessLogic.Implementation;
 using MTBusinessLogic.Model.DTO;
+using MTBusinessLogic.Utils;
 using System;
 using System.Collections.Generic;
 
@@ -14,21 +15,21 @@ public partial class artistDetails : System.Web.UI.Page
     private ISongService _songService;
     public ISongService SongService
     {
-        get { return _songService == null ? new SongService() : _songService; }
+        get { return _songService ?? new SongService(); }
         set { _songService = value; }
     }
 
     private ICloudinaryService _cloudinaryService;
     public ICloudinaryService CloudinaryService
     {
-        get { return _cloudinaryService == null ? new CloudinaryService() : _cloudinaryService;}
+        get { return _cloudinaryService ?? new CloudinaryService(); }
         set {  _cloudinaryService = value; }
     }
 
     private  IArtistService _artistService;
     public IArtistService ArtistService
     {
-        get { return this._artistService == null? new ArtistService(CloudinaryService) : _artistService; }
+        get { return _artistService ?? new ArtistService(CloudinaryService); }
         set {  this._artistService = value; }
     }
 
@@ -36,11 +37,13 @@ public partial class artistDetails : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+       
         Page.MaintainScrollPositionOnPostBack = true;
     }
 
     public ICollection<ArtistDetailsDTO> GetArtistDetails()
     {
+       
         List<ArtistDetailsDTO> artistDetails = ArtistService.GetArtistDetailInternal();
         var itemsPerPage = 10;
 
@@ -63,18 +66,21 @@ public partial class artistDetails : System.Web.UI.Page
         }
 
         ExpectedDetails = ArtistDetailsModels;
-        var result = SongService.GetPaginated<ArtistDetailsDTO>(PageNumber, itemsPerPage, artistDetails);
+        var result = SongService.GetPaginated(PageNumber, itemsPerPage, artistDetails);
         return result;
     }
 
-    public int ArtistDetailsPageCount()
+    public IEnumerable<int> ArtistDetailsPageCount()
     {
-        double itemsPerPage = 15;
-       var TotalNumberOfPages = (int)Math.Ceiling(GetArtistDetails().Count / itemsPerPage);
+        Pager pagesCount = new Pager();
+       // double itemsPerPage = 15;
+       //var TotalNumberOfPages = (int)Math.Ceiling(GetArtistDetails().Count / itemsPerPage);
 
-        return TotalNumberOfPages;
+        return pagesCount.Pages;
 
     }
+
+   
 }
 public class artistDetailsModel
 {

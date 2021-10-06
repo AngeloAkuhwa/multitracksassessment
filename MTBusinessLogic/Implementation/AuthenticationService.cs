@@ -23,21 +23,25 @@ namespace MTBusinessLogic.Implementation
 
             var resultCount =  _dataProvider.Execute(query);
 
-           return resultCount > 0;
+            return resultCount > 0;
         }
 
         private void InstantiateParamters(LoginDTO param)
         {
-            SqlParameter sqlParamEmail = new SqlParameter();
-            sqlParamEmail.ParameterName = "email";
-            sqlParamEmail.SqlDbType = SqlDbType.VarChar;
-            sqlParamEmail.Value = param.email;
+            SqlParameter sqlParamEmail = new SqlParameter
+            {
+                ParameterName = "email",
+                SqlDbType = SqlDbType.VarChar,
+                Value = param.email
+            };
 
 
-            SqlParameter sqlParamPassword = new SqlParameter();
-            sqlParamPassword.ParameterName = "password";
-            sqlParamPassword.SqlDbType = SqlDbType.VarChar;
-            sqlParamPassword.Value = param.password;    
+            SqlParameter sqlParamPassword = new SqlParameter
+            {
+                ParameterName = "password",
+                SqlDbType = SqlDbType.VarChar,
+                Value = param.password
+            };
 
             _dataProvider.Parameters.Add(sqlParamEmail);
             _dataProvider.Parameters.Add(sqlParamPassword);

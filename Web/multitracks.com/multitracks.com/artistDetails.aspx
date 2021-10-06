@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true"   CodeFile="artistDetails.aspx.cs" Inherits="artistDetails" MaintainScrollPositionOnPostback="true"  %>
+﻿<%@ Page Language="C#" ClientIDMode="Static" AutoEventWireup="true" MaintainScrollPositionOnPostback="true" CodeFile="artistDetails.aspx.cs" Inherits="artistDetails" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,14 +10,10 @@
 	<title>MultiTracks.com</title>
 	<!-- include the site stylesheet -->
 	 <link href="../Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="../Scripts/jquery-3.0.0.min.js"></script>
+    <%--<script src="../Scripts/jquery-3.0.0.min.js"></script>--%>
     <script src="../lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/f59bcd8580.js"></script>
 	<link href="PageToSync/css/index.css" rel="stylesheet" />
 
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 	
 
@@ -35,7 +31,7 @@
 					<div class="details-banner--hero">
 						<img class="details-banner--hero--img" src="./img/31.jpg" 
 						srcset="./img/31.jpg, 
-						./img/31.jpg 2x" alt="Bethel Music">
+						./img/31.jpg 2x" alt="Bethel Music"/>
 					</div>
 					<div class="details-banner--info">
 						<a href="#" class="details-banner--info--box">
@@ -43,7 +39,7 @@
 								 src="./img/174.jpg"
 								 srcset="./img/174-sm.jpg,
 								 			./img/174.jpg 2x"
-							     alt="alt">
+							     alt="alt"/>
 						</a>
 						<h1 class="details-banner--info--name"><a class="details-banner--info--name--link" href="#">Bethel Music</a></h1>
 					</div>
@@ -71,8 +67,8 @@
 								<section class="standard--holder">
 								
 									<div class="discovery--section--header">
-										<h2>Top Songs</h2>
-										<h1><% = ArtistDetailsPageCount() %></h1>
+										<h2 id="UserName" onclick="FocusSignIn()">Top Songs</h2>
+										<h1></h1>
 										<a class="discovery--section--header--view-all" href="#">View All</a>
 									</div><!-- /.discovery-select -->
 
@@ -153,9 +149,10 @@
 									</div>
 
 									<!-- /.discovery-section-header -->
-									  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">...ReadMore</button>
-									<div class="artist-details--biography biography collapse" id="demo">
-										<p class="comment more"><% = item.biography %></p>
+									
+									<div class="artist-details--biography biography">
+										<p><% = item.biography %></p>
+										<a href="#">Read More...</a>
 									</div>
 
 									
@@ -170,18 +167,60 @@
 			<div class="col-sm-12">
 				<ul class="pagination justify-content-center">
 					<li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link active" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">4</a></li>
-					<li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+					<li class="page-item first"><a class="page-link" href="#">1</a></li>
+					<li class="page-item second"><a class="page-link" href="#">2</a></li>
+					<li class="page-item third"><a class="page-link" href="#">3</a></li>
+					<li class="page-item fourth"><a class="page-link" href="#">4</a></li>
+					<li class="page-item" id="next"><a class="page-link">&raquo;</a></li>
 				</ul>
 			</div>
+
 			<a class="accessibility" href="#wrapper" tabindex="20">Back to top</a>
 
-			<asp:HiddenField runat="server" ID="SendA" Value="" />
 			</form>
-	</body>
-</html>
 
-</script>
+	</body>
+
+	<script  type="text/javascript">
+
+        let pageNumberOne = document.getElementsByClassName("first").textContent;
+        let pageNumberTwo = document.getElementsByClassName("second").textContent;
+        let pageNumberThree = document.getElementsByClassName("third").textContent;
+		let pageNumberFour = document.getElementsByClassName("fourth").textContent;
+
+		
+
+
+        document.getElementById("next").addEventListener("click", function (event) {
+            event.preventDefault();
+            pageNumberOne += 1;
+            pageNumberTwo += 1;
+            pageNumberThree += 1;
+        });
+
+        let defaultPageNumber = <% = PageNumber %>;
+
+
+        document.getElementsByClassName("first").addEventListener("click", function () {
+            defaultPageNumber = pageNumberOne;
+				<% = GetArtistDetails() %>;
+            });
+
+        document.getElementsByClassName("second").addEventListener("click", function () {
+            defaultPageNumber = pageNumberTwo;
+				<% = GetArtistDetails() %>;
+			});
+
+			document.getElementsByClassName("third").addEventListener("click", function () {
+				defaultPageNumber = pageNumberThree; 
+				<% = GetArtistDetails() %>;
+			});
+
+			document.getElementsByClassName("fourth").addEventListener("click", function () {
+				defaultPageNumber = pageNumberFour; 
+				<% = GetArtistDetails() %>;
+            });
+
+    </script>
+
+	</html>

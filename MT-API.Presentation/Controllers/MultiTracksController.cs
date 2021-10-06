@@ -6,7 +6,6 @@ using MTBusinessLogic.Utils;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -84,7 +83,7 @@ namespace MT_API.Presentation.Controllers
             try
             {
 
-                if (HttpContext.Current.Request.Files.Count < 3) throw new ApplicationException("all images are required");
+                if (HttpContext.Current.Request.Files.Count < 3 || HttpContext.Current.Request.Files.Count > 3) throw new ApplicationException("all images are required");
 
                 var httpRequest = HttpContext.Current.Request;
                 int i = 1;

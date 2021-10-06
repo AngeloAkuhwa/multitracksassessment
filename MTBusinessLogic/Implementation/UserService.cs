@@ -34,6 +34,16 @@ namespace MTBusinessLogic.Implementation
 
             InstantiateParameters(param);
 
+            var userExist = "SELECT email,FROM dbo.AppUser WHERE email = @email";
+            var userExistResult = _dataProvider.Execute(userExist);
+            if (userExistResult > 0)
+            {
+                response.StatusCode = 200;
+                response.Success = false;
+                response.Message = "Registration failed, User already exist";
+                return response;
+            }
+
             var query = "INSERT INTO AppUser (firstName,lastName,church,language,country,address,zip,password,email,dateCreation,dateUpdated)" +
                 "VALUES (@firstName,@lastName,@church,@language,@country,@address,@zip,@password,@email,@dateCreation,@dateUpdated)";
 
@@ -53,74 +63,96 @@ namespace MTBusinessLogic.Implementation
 
         private void InstantiateParameters(AppUser param)
         {
-            SqlParameter sqlParamFirstName = new SqlParameter();
-            sqlParamFirstName.ParameterName = "firstName";
-            sqlParamFirstName.SqlDbType = SqlDbType.VarChar;
-            sqlParamFirstName.Direction = ParameterDirection.Input;
-            sqlParamFirstName.Value = param.firstName;
+            SqlParameter sqlParamFirstName = new SqlParameter
+            {
+                ParameterName = "firstName",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.firstName
+            };
 
 
-            SqlParameter sqlParamLastName = new SqlParameter();
-            sqlParamLastName.ParameterName = "lastName";
-            sqlParamLastName.SqlDbType = SqlDbType.VarChar;
-            sqlParamLastName.Direction = ParameterDirection.Input;
-            sqlParamLastName.Value = param.lastName;
+            SqlParameter sqlParamLastName = new SqlParameter
+            {
+                ParameterName = "lastName",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.lastName
+            };
 
-            SqlParameter sqlParamChurch = new SqlParameter();
-            sqlParamChurch.ParameterName = "church";
-            sqlParamChurch.SqlDbType = SqlDbType.VarChar;
-            sqlParamChurch.Direction = ParameterDirection.Input;
-            sqlParamChurch.Value = param.church;
-
-
-            SqlParameter sqlParamAddress = new SqlParameter();
-            sqlParamAddress.ParameterName = "address";
-            sqlParamAddress.SqlDbType = SqlDbType.NVarChar;
-            sqlParamAddress.Direction = ParameterDirection.Input;
-            sqlParamAddress.Value = param.address;
-
-            SqlParameter sqlParamLastLanguage = new SqlParameter();
-            sqlParamLastLanguage.ParameterName = "language";
-            sqlParamLastLanguage.SqlDbType = SqlDbType.VarChar;
-            sqlParamLastLanguage.Direction = ParameterDirection.Input;
-            sqlParamLastLanguage.Value = param.language;
-
-            SqlParameter sqlParamZip = new SqlParameter();
-            sqlParamZip.ParameterName = "zip";
-            sqlParamZip.SqlDbType = SqlDbType.Int;
-            sqlParamZip.Direction = ParameterDirection.Input;
-            sqlParamZip.Value = param.zip;
+            SqlParameter sqlParamChurch = new SqlParameter
+            {
+                ParameterName = "church",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.church
+            };
 
 
-            SqlParameter sqlParamCountry = new SqlParameter();
-            sqlParamCountry.ParameterName = "country";
-            sqlParamCountry.SqlDbType = SqlDbType.VarChar;
-            sqlParamCountry.Direction = ParameterDirection.Input;
-            sqlParamCountry.Value = param.country;
+            SqlParameter sqlParamAddress = new SqlParameter
+            {
+                ParameterName = "address",
+                SqlDbType = SqlDbType.NVarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.address
+            };
 
-            SqlParameter sqlParamPassword = new SqlParameter();
-            sqlParamPassword.ParameterName = "password";
-            sqlParamPassword.SqlDbType = SqlDbType.VarChar;
-            sqlParamPassword.Direction = ParameterDirection.Input;
-            sqlParamPassword.Value = param.password;
+            SqlParameter sqlParamLastLanguage = new SqlParameter
+            {
+                ParameterName = "language",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.language
+            };
 
-            SqlParameter sqlParamEmail = new SqlParameter();
-            sqlParamEmail.ParameterName = "email";
-            sqlParamEmail.SqlDbType = SqlDbType.VarChar;
-            sqlParamEmail.Direction = ParameterDirection.Input;
-            sqlParamEmail.Value = param.email;
+            SqlParameter sqlParamZip = new SqlParameter
+            {
+                ParameterName = "zip",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Input,
+                Value = param.zip
+            };
 
-            SqlParameter sqlParamDateCreation = new SqlParameter();
-            sqlParamDateCreation.ParameterName = "dateCreation";
-            sqlParamDateCreation.SqlDbType = SqlDbType.VarChar;
-            sqlParamDateCreation.Direction = ParameterDirection.Input;
-            sqlParamDateCreation.Value = param.dateCreation;
 
-            SqlParameter sqlParamDateUpdated = new SqlParameter();
-            sqlParamDateUpdated.ParameterName = "dateUpdated";
-            sqlParamDateUpdated.SqlDbType = SqlDbType.VarChar;
-            sqlParamDateUpdated.Direction = ParameterDirection.Input;
-            sqlParamDateUpdated.Value = param.dateUpdated;
+            SqlParameter sqlParamCountry = new SqlParameter
+            {
+                ParameterName = "country",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.country
+            };
+
+            SqlParameter sqlParamPassword = new SqlParameter
+            {
+                ParameterName = "password",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.password
+            };
+
+            SqlParameter sqlParamEmail = new SqlParameter
+            {
+                ParameterName = "email",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.email
+            };
+
+            SqlParameter sqlParamDateCreation = new SqlParameter
+            {
+                ParameterName = "dateCreation",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.dateCreation
+            };
+
+            SqlParameter sqlParamDateUpdated = new SqlParameter
+            {
+                ParameterName = "dateUpdated",
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input,
+                Value = param.dateUpdated
+            };
 
             _dataProvider.Parameters.Add(sqlParamFirstName);
             _dataProvider.Parameters.Add(sqlParamLastName);
